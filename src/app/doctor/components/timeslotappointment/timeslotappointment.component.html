@@ -1,0 +1,45 @@
+<div class="spinnerCustomStyle " *ngIf="!isLoaded">
+    <mat-spinner></mat-spinner>
+</div>
+<div class="container" *ngIf="isLoaded ">
+    <div class="row justify-content-center " *ngIf="noData">
+        <div class="timesection ">
+            <h5>{{date}}</h5>
+        </div>
+        <section id="doctors" class="doctors col-10 ">
+            <div class=" total col-12">{{patients.length}} Total appointments
+            </div>
+            <div class="row my-4   justify-content-center">
+
+                <div class="member card col-9 my-3 " *ngFor="let Bookingitem of patients">
+                    <div class="d-flex align-items-start">
+                        <div class="pic"><img src="assets/img/doctors/avatar.jpg" class="img-fluid" alt=""></div>
+                        <div class="member-info">
+                            <h4>{{Bookingitem.name}}</h4>
+
+                            <div>
+                                <p class="bi bi-telephone">{{Bookingitem.mobilePhone}}</p>
+                                <p class="bi bi-envelope">{{Bookingitem.email}}</p>
+                            </div>
+
+                            <button class="btn btn-danger mt-4 mx-2"
+                                (click)="goToPatient(Bookingitem._id,Bookingitem.bookingId)">Finish appointment</button>
+                            <a class="btn btn-primary mt-4 mx-2"
+                                [routerLink]="['/doctor','history',Bookingitem._id]">View History</a>
+
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+    <div class="text-center p-5 m-5" *ngIf="!noData" style="margin-top: 150px!important;">
+        <h2 class="cH2 p-5 m-5">{{"NoData" | translate}}</h2>
+    </div>
+</div>

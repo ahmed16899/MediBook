@@ -1,0 +1,72 @@
+<div class="spinnerCustomStyle" *ngIf="!isLoaded">
+  <mat-spinner></mat-spinner>
+</div>
+
+<section id="doctors" class="doctors bg-light" *ngIf="isLoaded">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card">
+          <img
+            src="assets/img/doctors/doctors-1.jpg"
+            class="card-img-top"
+            alt=""
+          />
+          <div class="card-body">
+            <h4 class="card-title">{{ doctorInfo?.name }}</h4>
+            <p class="card-text">
+              Doctor specialized in {{ doctorInfo?.specification }}
+            </p>
+            <ngb-rating
+              class="d-block"
+              [max]="5"
+              [readonly]="true"
+              [rate]="doctorInfo?.doctorRate"
+            ></ngb-rating>
+            <p class="card-text">
+              <i class="bi bi-geo-alt"></i> {{ doctorInfo?.clinicAddress }}
+            </p>
+            <p class="card-text">
+              <i class="bi bi-telephone"></i> {{ doctorInfo?.mobilePhone }}
+            </p>
+            <button class="btn btn-primary" (click)="showTimeSlots()">
+              Available times
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8 col-lg-6">
+        <div class="card" *ngIf="isEnded">
+          <div class="card-body">
+            <h4 class="card-title">Your opinion matters to us!</h4>
+            <div class="row justify-content-center">
+              <ngb-rating
+                class="col-lg-2 mt-3 col-6"
+                [max]="5"
+                [formControl]="rateFormControll"
+              ></ngb-rating>
+            </div>
+            <button
+              class="btn btn-primary mt-3"
+              [disabled]="!rateFormControll.valid"
+              (click)="submitRating()"
+            >
+              Submit
+            </button>
+          </div>
+        </div>
+        <div class="card my-3" *ngIf="isEnded">
+          <div class="card-body">
+            <h4 class="card-title">Prescription from doctor</h4>
+            <ul class="list-unstyled">
+              <li>{{ notification }}</li>
+            </ul>
+          </div>
+        </div>
+        <div class="alert alert-danger text-center my-2" *ngIf="!isEnded">
+          Your appointment is not finished yet!
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

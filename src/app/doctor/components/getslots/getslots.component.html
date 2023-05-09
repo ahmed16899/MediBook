@@ -1,0 +1,56 @@
+<div class="spinnerCustomStyle" *ngIf="!checkLoader">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div *ngIf="checkLoader" style="padding: 3rem">
+  <section  *ngIf="noData">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">{{ "date" | translate }}</th>
+          <th scope="col">{{ "from" | translate }}</th>
+          <th scope="col">{{ "to" | translate }}</th>
+          <th scope="col">{{ "fullyBooked" | translate }}</th>
+          <th scope="col">{{ "isHoliday" | translate }}</th>
+          <th scope="col">{{ "maxReservations" | translate }}</th>
+          <th scope="col">{{ "bookingPrice" | translate }}</th>
+          <th scope="col">{{ "reservations" | translate }}</th>
+          <th>appointments</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let slot of pagedItems; let i = index">
+          <td>{{ slot.date | date : "yyyy/MM/dd" }}</td>
+          <td>{{ slot.from | date : "h:mm a" }}</td>
+          <td>{{ slot.to | date : "h:mm a" }}</td>
+          <td>{{ slot.fullyBooked }}</td>
+          <td>{{ slot.isHoliday }}</td>
+          <td>{{ slot.maxReservations }}</td>
+          <td>{{ slot.bookingPrice | currency }}</td>
+          <td>{{ slot.reservations }}</td>
+          <td>
+            <button
+              class="booknowbtn"
+              (click)="getTimeSlot(slot._id, slot.doctorId)"
+            >
+              View all
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="pagination d-flex justify-content-center align-items-center py-4">
+      <button
+        class="pagination-item text-center"
+        *ngFor="let page of length"
+        [class.active]="currentPage === page"
+        (click)="setPage(page)"
+      >
+        {{ page }}
+      </button>
+    </div>
+  </section>
+  <section class="text-center m-5" *ngIf="!noData">
+    <h2 class="cH2 p-5 m-5">{{"NoData" | translate}}</h2>
+  </section>
+</div>

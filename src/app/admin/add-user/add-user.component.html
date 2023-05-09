@@ -1,0 +1,128 @@
+<div class="section-bg-light ">
+    <form [formGroup]="addUserForm" (ngSubmit)="submitForm()" class="w-50 mx-auto py-5" enctype="multipart/form-data">
+        <h2 class="text-center cH2">{{'Add User' | translate}}</h2>
+
+        <div>
+            <label class="my-2" for="email">{{'Email' | translate}}</label>
+            <input type="email" id="email" formControlName="email" class="form-control">
+            <div *ngIf="addUserForm.get('email')?.invalid && (addUserForm.get('email')?.['dirty'] || addUserForm.get('email')?.['touched'])" class="alert alert-danger mt-2">
+                <div *ngIf="addUserForm.get('email')?.errors?.['required']">{{'Emailisrequired' | translate}}</div>
+                <div *ngIf="addUserForm.get('email')?.errors?.['email']">{{'EnterEmailForm' | translate}}</div>
+            </div>
+        </div>
+        <div>
+
+
+
+            <div>
+                <label class="my-2" for="name">{{'Name' | translate}}</label>
+                <input type="name" id="name" formControlName="name" class="form-control">
+                <div *ngIf="addUserForm.get('name')?.invalid && (addUserForm.get('name')?.['dirty'] || addUserForm.get('name')?.['touched'])" class="alert alert-danger mt-2">
+                    <div *ngIf="addUserForm.get('name')?.errors?.['required']">{{'nameisrequired' | translate}}</div>
+                </div>
+            </div>
+
+
+            <div>
+                <label class="my-2" for="mobilePhone">{{'mobilePhone' | translate}}</label>
+                <input type="mobilePhone" id="mobilePhone" formControlName="mobilePhone" class="form-control">
+                <div *ngIf="addUserForm.get('mobilePhone')?.invalid && (addUserForm.get('mobilePhone')?.['dirty'] || addUserForm.get('mobilePhone')?.['touched'])" class="alert alert-danger mt-2">
+                    <div *ngIf="addUserForm.get('mobilePhone')?.errors?.['required']">{{'mobilePhoneisrequired' | translate}}</div>
+                </div>
+            </div>
+
+            <div>
+                <label class="my-2" for="type">{{'type' | translate}}</label>
+                <select id="type" formControlName="type" class="form-control">
+              <option value="">{{'Selecttype' | translate}}</option>
+              <option value="admin">{{'Admin' | translate}}</option>
+              <option value="patient">{{'Patient' | translate}}</option>
+              <option value="doctor">{{'Doctor' | translate}}</option>
+            </select>
+                <div *ngIf="addUserForm.get('type')?.invalid && (addUserForm.get('type')?.dirty || addUserForm.get('type')?.touched)" class="alert alert-danger mt-2">
+                    <div *ngIf="addUserForm.get('type')?.errors?.['required']">{{'typeisrequired' | translate}}</div>
+                </div>
+            </div>
+
+
+
+
+
+
+            <label class="my-2" for="username">{{'Username' | translate}}</label>
+            <input type="text" id="username" formControlName="username" class="form-control">
+            <div *ngIf="addUserForm.get('username')?.invalid && (addUserForm.get('username')?.dirty || addUserForm.get('username')?.touched)" class="alert alert-danger mt-2">
+                <div *ngIf="addUserForm.get('username')?.errors?.['required']">{{'Usernameisrequired' | translate}}</div>
+            </div>
+        </div>
+        <div>
+            <label class="my-2" for="password">{{'Password' | translate}}</label>
+            <input type="password" id="password" formControlName="password" class="form-control">
+            <div *ngIf="addUserForm.get('password')?.invalid && (addUserForm.get('password')?.dirty || addUserForm.get('password')?.touched)" class="alert alert-danger mt-2">
+                <div *ngIf="addUserForm.get('password')?.errors?.['required']">{{'Passwordisrequired' | translate}}</div>
+                <div *ngIf="addUserForm.get('password')?.errors?.['minlength']">{{'Passwordmustbemorethan8chars' | translate}}</div>
+            </div>
+        </div>
+        <div>
+            <label class="my-2" for="image">{{'Image' | translate}}</label>
+            <input type="file" id="image" class="form-control" (change)="onFileSelected($event)">
+
+        </div>
+        <div>
+            <label class="my-2" for="gender">{{'Gender' | translate}}</label>
+            <select id="gender" formControlName="gender" class="form-control">
+            <option value="">{{'Selectgender' | translate}}</option>
+            <option value="male">{{'Male' | translate}}</option>
+            <option value="female">{{'Female' | translate}}</option>
+            <option value="other">{{'Other' | translate}}</option>
+          </select>
+
+            <div *ngIf="addUserForm.controls['type'].value == 'doctor'">
+                <label class="my-2" for="clinicAddress">{{'clinicAddress' | translate}}</label>
+                <!-- <input type="clinicAddress" id="clinicAddress" formControlName="clinicAddress" class="form-control"> -->
+                <select id="clinicAddress" formControlName="clinicAddress" class="form-control">
+              <option value="">{{'Selectrole' | translate}}</option>
+              <option *ngFor="let address of addressarray" [value]="address">{{address}}</option>
+            </select>
+                <div *ngIf="addUserForm.get('clinicAddress')?.invalid && (addUserForm.get('clinicAddress')?.dirty || addUserForm.get('clinicAddress')?.touched)" class="alert alert-danger mt-2">
+                    <div *ngIf="addUserForm.get('clinicAddress')?.errors?.['required']">{{'clinicAddressisrequired' | translate}}</div>
+                </div>
+            </div>
+
+            <div *ngIf="addUserForm.controls['type'].value == 'doctor'">
+                <label class="my-2" for="specification">{{'specification' | translate}}</label>
+                <!-- <input type="specification" id="specification" formControlName="specification" class="form-control"> -->
+                <select id="specification" formControlName="specification" class="form-control">
+              <option value="">{{'specification' | translate}}</option>
+              <option *ngFor="let dep of departmentsarray" [value]="dep">{{dep}}</option>
+            </select>
+                <div *ngIf="addUserForm.get('specification')?.invalid && (addUserForm.get('specification')?.dirty || addUserForm.get('specification')?.touched)" class="alert alert-danger mt-2">
+                    <div *ngIf="addUserForm.get('specification')?.errors?.['required']">{{'specificationisrequired' | translate}}</div>
+                </div>
+            </div>
+
+
+            <div *ngIf="addUserForm.controls['type'].value == 'doctor'">
+                <label class="my-2" for="role">{{'role' | translate}}</label>
+                <select id="role" formControlName="role" class="form-control">
+              <option value="">{{'Selectrole' | translate}}</option>
+              <option value="human">{{'Human' | translate}}</option>
+              <option value="veterinary">{{'Veterinary' | translate}}</option>
+            </select>
+                <div *ngIf="addUserForm.get('role')?.invalid && (addUserForm.get('role')?.dirty || addUserForm.get('role')?.touched)" class="alert alert-danger mt-2">
+                    <div *ngIf="addUserForm.get('role')?.errors?.['required']">{{'roleisrequired' | translate}}</div>
+                </div>
+            </div>
+            <div *ngIf="addUserForm.get('gender')?.invalid && (addUserForm.get('gender')?.dirty || addUserForm.get('gender')?.touched)" class="alert alert-danger mt-2">
+                <div *ngIf="addUserForm.get('gender')?.errors?.['required']">{{'Genderisrequired' | translate}}</div>
+            </div>
+        </div>
+        <div class="text-center">
+            <button class="btnCustomeStyle btn-success mt-5" type="submit" [disabled]="addUserForm.invalid">{{'Add User' | translate}}</button>
+
+        </div>
+    </form>
+</div>
+
+
+<!-- -->

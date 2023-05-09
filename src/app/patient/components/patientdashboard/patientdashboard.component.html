@@ -1,0 +1,138 @@
+<div class="spinnerCustomStyle" *ngIf="!checkLoader">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div class="container-fluid p-3">
+  <div class="row">
+    <div class="col-xl-6 mb-4">
+      <div class="card shadow">
+        <div class="card-header">
+          <h2 class="card-title">
+            {{ "Last3MonthsReservationsperDepartment" | translate }}
+          </h2>
+        </div>
+        <div class="card-body">
+          <ngx-charts-bar-vertical-2d
+            *ngIf="noData3"
+            [results]="depEarned"
+            [view]="view"
+            [scheme]="colorScheme"
+            [schemeType]="schemeType"
+            [gradient]="gradient"
+            [xAxis]="xAxis"
+            [yAxis]="yAxis"
+            [legend]="legend"
+            [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel"
+            [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel"
+            [legendTitle]="legendTitleMulti"
+            [legendPosition]="legendPosition"
+            [animations]="animations"
+            [showGridLines]="showGridLines"
+            [barPadding]="barPadding"
+            [tooltipDisabled]="tooltipDisabled"
+          ></ngx-charts-bar-vertical-2d>
+          <div class="text-center p-5" *ngIf="!noData3">
+            <h2 class="cH2">{{ "NoData" | translate }}</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-6 mb-4">
+      <div class="card shadow">
+        <div class="card-header">
+          <h2 class="card-title">
+            {{ "Last3MonthsReservationsperDepartment" | translate }}
+          </h2>
+        </div>
+        <div class="card-body">
+          <ngx-charts-line-chart
+            *ngIf="noData3"
+            [results]="depEarned"
+            [view]="view"
+            [scheme]="colorScheme"
+            [legend]="legend"
+            [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel"
+            [xAxis]="xAxis"
+            [yAxis]="yAxis"
+            [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel"
+            [timeline]="timeline"
+          >
+          </ngx-charts-line-chart>
+          <div class="text-center p-5" *ngIf="!noData3">
+            <h2 class="cH2">{{ "NoData" | translate }}</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-6 mb-4">
+      <div class="card shadow">
+        <div class="card-header">
+          <h2 class="card-title">
+            {{ "ReservationsnumberperDepartment" | translate }}
+          </h2>
+        </div>
+        <div class="card-body">
+          <ngx-charts-pie-chart
+            *ngIf="noData2"
+            [results]="depReservations"
+            [view]="view"
+            [scheme]="colorScheme"
+            [gradient]="gradient"
+            [legend]="showLegend"
+            [legendPosition]="legendPosition"
+            [labels]="showLabels"
+            [doughnut]="isDoughnut"
+            (select)="onSelect($event)"
+            (activate)="onActivate($event)"
+            (deactivate)="onDeactivate($event)"
+          >
+          </ngx-charts-pie-chart>
+          <div class="text-center p-5" *ngIf="!noData2">
+            <h2 class="cH2">{{ "NoData" | translate }}</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-6 mb-4">
+      <div class="card shadow">
+        <div class="card-header">
+          <h2 class="card-title">
+            {{ "ReservationsnumberperDoctor" | translate }}
+          </h2>
+        </div>
+        <div class="card-body">
+          <ngx-charts-number-card
+            *ngIf="noData1"
+            [results]="docNums"
+            [view]="view"
+            [scheme]="colorScheme2"
+            [cardColor]="cardColor"
+            (select)="onSelect($event)"
+          >
+          </ngx-charts-number-card>
+          <div class="text-center p-5" *ngIf="!noData1">
+            <h2 class="cH2">{{ "NoData" | translate }}</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <ngx-charts-bar-vertical-normalized class="w-100 bg-primary m-5"  [results]="productSalesMulti" [view]="view"
+    [scheme]="colorScheme" [schemeType]="schemeType" [gradient]="gradient" [xAxis]="xAxis" [yAxis]="yAxis"
+    [legend]="legend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
+    [yAxisLabel]="yAxisLabel" [legendTitle]="legendTitleMulti" [legendPosition]="legendPosition"
+    [animations]="animations" [showGridLines]="showGridLines" [barPadding]="barPadding"
+    [tooltipDisabled]="tooltipDisabled">
+</ngx-charts-bar-vertical-normalized>
+
+ <div  style="margin-top: 100px;" >
+    <ngx-charts-line-chart class="w-100 m-5"[results]="productSalesMulti" [view]="view" [scheme]="colorScheme" [legend]="legend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxis]="xAxis" [yAxis]="yAxis" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel"
+                [timeline]="timeline">
+            </ngx-charts-line-chart>
+</div>  -->

@@ -1,0 +1,53 @@
+<div class="spinnerCustomStyle" *ngIf="!isLoaded">
+  <mat-spinner></mat-spinner>
+</div>
+<section *ngIf="isLoaded">
+  <section
+  id="doctors"
+  class="doctors"
+  *ngIf="checkDataisHere"
+  style="background-color: rgba(255, 255, 255, 0.79)"
+>
+  <div class="row my-4 justify-content-center"  *ngFor="let doc of pagedItems" >
+    <div class="member card col-md-8"  >
+      <div class="d-flex align-items-start justify-content-between">
+        <div class="member-info" *ngIf="!doc.fullyBooked">
+          <h4>{{ doc.date }}</h4>
+          <p>from {{ doc.from }}</p>
+          <p>To {{ doc.to }}</p>
+        </div>
+        <div *ngIf="doc.fullyBooked">
+          <h4 style="color: rgba(1, 1, 1, 0.57)">No Available Appointment</h4>
+        </div>
+        <button
+          class="btn"
+          [ngClass]="{
+            'btn-secondary': doc.disabled,
+            'btn-danger': !doc.disabled
+          }"
+          [disabled]="doc.fullyBooked || doc.disabled"
+          (click)="book(doc._id)"
+        >
+          Book
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="pagination d-flex justify-content-center align-items-center py-4">
+    <button
+      class="pagination-item text-center"
+      *ngFor="let page of length"
+      [class.active]="currentPage === page"
+      (click)="setPage(page)"
+    >
+      {{ page }}
+    </button>
+  </div>
+</section>
+
+<section *ngIf="!checkDataisHere" class="text-center p-5 m-5">
+  <h2 class="cH2 p-5 m-5">No Data</h2> 
+</section>
+
+</section>

@@ -1,0 +1,298 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+/* Importing Bootstrap SCSS file. */
+
+@import 'bootstrap/scss/bootstrap';
+
+section {
+    padding: 60px 0;
+    overflow: hidden;
+}
+ngb-rating{
+    color: #FFC107;
+    text-decoration: none;
+    font-size: 40px;
+}
+.docrate{
+    font-size: 20px;
+}
+
+.section-bg {
+    background-color: #f1f7fd;
+}
+
+.section-title {
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+.section-title h2 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    position: relative;
+    color: #2c4964;
+}
+
+.cH2 {
+    font-size: 32px !important;
+    font-weight: bold !important;
+    color: #2c4964 !important;
+    margin-bottom: 20px !important;
+    padding-bottom: 20px !important;
+}
+
+.section-title h2::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 120px;
+    height: 1px;
+    background: #ddd;
+    bottom: 1px;
+    left: calc(50% - 60px);
+}
+
+.section-title h2::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: #1977cc;
+    bottom: 0;
+    left: calc(50% - 20px);
+}
+
+.section-title p {
+    margin-bottom: 0;
+}
+
+.btnCustomeStyle {
+    background: #1977cc;
+    border: 0;
+    padding: 10px 35px;
+    color: #fff;
+    transition: 0.4s;
+    border-radius: 50px;
+}
+
+.btnCustomeStyle:hover {
+    background: #1f94fb;
+    cursor: pointer;
+}
+
+.btnCustomeStyle:disabled {
+    background: #85c4fb;
+}
+
+.section-bg-light {
+    background-color: #f1f7fd;
+}
+a{
+    text-decoration: none;
+}
+body {
+    font-family: "Open Sans", sans-serif;
+    //color: #444444;
+}
+
+h2 {
+    font-size: 32px;
+    font-weight: bold;
+    position: relative;
+    color: #2c4964;
+}
+
+label {
+    font-size: 1.3rem;
+    color: #2c4964;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.customTH
+{
+    font-size: 1.1rem;
+}
+
+.spinnerCustomStyle
+{
+   
+   height: 50vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+    
+}
+
+.doctors {
+    background: #fff;
+}
+
+.doctors .member {
+    background-color: white;
+    position: relative;
+    box-shadow: 0px 2px 15px rgba(44, 73, 100, 0.08);
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.doctors .member .pic {
+    overflow: hidden;
+    width: 180px;
+    border-radius: 50%;
+}
+
+.doctors .member .pic img {
+    transition: ease-in-out 0.3s;
+}
+
+.doctors .member:hover img {
+    transform: scale(1.1);
+}
+
+.doctors .member .member-info {
+    padding-left: 30px;
+}
+
+.doctors .member h4 {
+    font-weight: 700;
+    margin-bottom: 5px;
+    font-size: 20px;
+    color: #2c4964;
+}
+
+.doctors .member span {
+    display: block;
+    // font-size: 15px;
+    padding-bottom: 10px;
+    position: relative;
+    font-weight: 500;
+}
+
+.doctors .member span::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 50px;
+    height: 1px;
+    background: #b2c8dd;
+    bottom: 0;
+    left: 0;
+}
+
+.doctors .member p {
+    margin: 10px 0 0 0;
+    font-size: 14px;
+}
+.total {
+    color: #1977cc;
+    font-size: 14px;
+    text-decoration: underline;
+}
+.doctors .member .social {
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.doctors .member .social a {
+    transition: ease-in-out 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    width: 32px;
+    height: 32px;
+    background: #a0bcd5;
+}
+
+.doctors .member .social a i {
+    color: #fff;
+    font-size: 16px;
+    margin: 0 2px;
+}
+
+.doctors .member .social a:hover {
+    background: #1977cc;
+}
+
+.doctors .member .social a+a {
+    margin-left: 8px;
+}
+.bookingcard{
+        cursor: pointer;
+        width: calc(960px);
+        max-width: calc(-270px + 100vw);
+    }
+    .card{
+        cursor: pointer;
+    }
+    .booknowbtn {
+        background: #1977cc;
+        border: 0;
+        padding: 10px 35px;
+        color: #fff;
+        transition: 0.4s;
+        border-radius: 50px;
+    }
+    .booknowbtn:disabled{
+        opacity: 0.5;
+    }
+    .ratebtn
+    {
+        background-color: rgb(255, 200, 0);
+        border: 0;
+        padding: 10px 35px;
+        color: #fff;
+        transition: 0.4s;
+        border-radius: 50px; 
+    }
+    .ratebtn:hover{
+        background-color: rgba(255, 200, 0, 0.761);
+    }
+    .booknowbtn:hover {
+        background: #1c84e3;
+    }
+//////////////////////////////
+    .advanced-pie-legend .total-value {
+        margin-bottom: 10px;
+    }
+
+    .advanced-pie-legend .legend-items-container .legend-items .legend-item .item-value {
+        margin-top: 0px !important;
+        margin-bottom: 11px;
+    }
+
+
+    button.pagination-item {
+        background-color: white;
+        border: 1px solid #ddd;
+        color: #333;
+        padding: 6px 12px;
+        text-decoration: none;
+        margin-right: 5px;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+
+      button.pagination-item.active {
+        background-color: #1977cc;
+        color: white;
+        border-color: #1977cc;
+      }
+
+
+      

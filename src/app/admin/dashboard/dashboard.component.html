@@ -1,0 +1,569 @@
+<div class="spinnerCustomStyle" *ngIf="!checkLoader">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div class="container-fluid p-5 bg-light" *ngIf="checkLoader">
+  <div class="row mt-5 dashboard-container">
+    <div class="col-md-12 my-5 d-flex justify-content-center">
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-2 col-md-3 col-sm-4">
+          <div class="row d-flex justify-content-center">
+            <div
+              class="col-lg-4 col-md-6 d-flex justify-content-center align-items-center"
+            >
+              <span
+                class="bi bi-people p-2 h4 bg-warning rounded-circle text-center text-light"
+              >
+              </span>
+            </div>
+            <div
+              class="col-md-8 d-flex justify-content-center align-items-center"
+            >
+              <div class="row text-center">
+                <div class="col-md-12">
+                  <p class="text-muted">{{ "Total Users" | translate }}</p>
+                </div>
+                <div class="col-md-12">
+                  <p class="fw-bold h4">{{ usersCount?.numberOfUsers }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-3 col-sm-4">
+          <div class="row d-flex justify-content-center">
+            <div
+              class="col-lg-4 col-md-6 d-flex justify-content-center align-items-center"
+            >
+              <span
+                class="bi bi-person-lock p-2 h4 bg-info rounded-circle text-center text-light"
+              >
+              </span>
+            </div>
+            <div
+              class="col-md-8 d-flex justify-content-center align-items-center"
+            >
+              <div class="row text-center">
+                <div class="col-md-12">
+                  <p class="text-muted">{{ "TotalAdmins" | translate }}</p>
+                </div>
+                <div class="col-md-12">
+                  <p class="fw-bold h4">{{ usersCount?.numberOfAdmins }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-3 col-sm-4">
+          <div class="row d-flex justify-content-center">
+            <div
+              class="col-lg-4 col-md-6 d-flex justify-content-center align-items-center"
+            >
+              <span
+                class="bi bi-person-plus p-2 h4 bg-success rounded-circle text-center text-light"
+              >
+              </span>
+            </div>
+            <div
+              class="col-md-8 d-flex justify-content-center align-items-center"
+            >
+              <div class="row text-center">
+                <div class="col-md-12">
+                  <p class="text-muted">{{ "TotalDoctors" | translate }}</p>
+                </div>
+                <div class="col-md-12">
+                  <p class="fw-bold h4">{{ usersCount?.numberOfDoctors }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-3 col-sm-4">
+          <div class="row d-flex justify-content-center">
+            <div
+              class="col-lg-4 col-md-6 d-flex justify-content-center align-items-center"
+            >
+              <span
+                class="bi bi-people p-2 h4 bg-danger rounded-circle text-center text-light"
+              >
+              </span>
+            </div>
+            <div
+              class="col-md-8 d-flex justify-content-center align-items-center"
+            >
+              <div class="row text-center">
+                <div class="col-md-12">
+                  <p class="text-muted">{{ "TotalPatients" | translate }}</p>
+                </div>
+                <div class="col-md-12">
+                  <p class="fw-bold h4">{{ usersCount?.numberOfClients }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-3 col-sm-4">
+          <div class="row d-flex justify-content-center">
+            <div
+              class="col-lg-4 col-md-6 d-flex justify-content-center align-items-center"
+            >
+              <span
+                class="bi bi-calendar-check-fill p-2 h4 bg-primary rounded-circle text-center text-light"
+              >
+              </span>
+            </div>
+            <div
+              class="col-md-8 d-flex justify-content-center align-items-center"
+            >
+              <div class="row text-center">
+                <div class="col-md-12">
+                  <p class="text-muted">{{ "TotalBookings" | translate }}</p>
+                </div>
+                <div class="col-md-12">
+                  <p class="fw-bold h4">{{ usersCount?.numberOfBookings }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="d-flex justify-content-center align-items-center flex-wrap dashboard-container rounded-3 mt-4 p-5"
+  >
+    <div class="card shadow m-3">
+      <div class="card-header">
+        <h2 class="card-title">
+          {{ "Booking count for each department" | translate }}
+        </h2>
+      </div>
+      <div class="card-body">
+        <ngx-charts-bar-vertical
+          class="m-3"
+          [results]="deptFrequency"
+          [view]="viewVertical"
+          [scheme]="colorScheme"
+          [gradient]="gradient"
+          [xAxis]="xAxis"
+          [yAxis]="yAxis"
+          [legend]="legend"
+          [showXAxisLabel]="showXAxisLabel"
+          [showYAxisLabel]="showYAxisLabel"
+          [xAxisLabel]="xAxisLabelDepartment"
+          [yAxisLabel]="yAxisLabelDepartment"
+          [legendTitle]="legendTitleDepartment"
+          [animations]="animations"
+          [showGridLines]="showGridLines"
+          [trimXAxisTicks]="trimXAxisTicks"
+          [trimYAxisTicks]="trimYAxisTicks"
+          [rotateXAxisTicks]="rotateXAxisTicks"
+          [maxXAxisTickLength]="maxXAxisTickLength"
+          [maxYAxisTickLength]="maxYAxisTickLength"
+          [xAxisTickFormatting]="formatString"
+          [yAxisTickFormatting]="formatNumber"
+          [yAxisTicks]="yAxisTicks"
+          [showDataLabel]="showDataLabel"
+          [barPadding]="barPadding"
+          [tooltipDisabled]="tooltipDisabled"
+          [roundEdges]="roundEdges"
+        >
+        </ngx-charts-bar-vertical>
+      </div>
+    </div>
+
+    <div class="card shadow m-3">
+      <div class="card-header">
+        <h2 class="card-title">
+          {{ "Booking count for each doctor" | translate }}
+        </h2>
+      </div>
+      <div class="card-body">
+        <ngx-charts-bar-horizontal
+          class="m-3"
+          [view]="viewVertical"
+          [scheme]="colorScheme"
+          [results]="doctorFrequency"
+          [gradient]="gradient"
+          [xAxis]="showXAxisLabel"
+          [yAxis]="showYAxisLabel"
+          [legend]="legend"
+          [legendTitle]="legendTitleDoctors"
+          [showXAxisLabel]="showXAxisLabel"
+          [showYAxisLabel]="showYAxisLabel"
+          [xAxisLabel]="xAxisLabelDoctors"
+          [yAxisLabel]="yAxisLabelDoctors"
+          (select)="onSelect($event)"
+        >
+        </ngx-charts-bar-horizontal>
+      </div>
+    </div>
+
+    <!-- <ngx-charts-bar-vertical [results]="doctorFrequency" [view]="viewVertical" [scheme]="colorScheme"  [gradient]="gradient" [xAxis]="xAxis" [yAxis]="yAxis" [legend]="legend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
+    [xAxisLabel]="xAxisLabelDoctors" [yAxisLabel]="yAxisLabelDoctors" [legendTitle]="legendTitleDoctors" [animations]="animations" [showGridLines]="showGridLines" [trimXAxisTicks]="trimXAxisTicks" [trimYAxisTicks]="trimYAxisTicks"
+    [rotateXAxisTicks]="rotateXAxisTicks" [maxXAxisTickLength]="maxXAxisTickLength" [maxYAxisTickLength]="maxYAxisTickLength" [xAxisTickFormatting]="formatString" [yAxisTickFormatting]="formatNumber" [yAxisTicks]="yAxisTicks" [showDataLabel]="showDataLabel"
+    [barPadding]="barPadding" [tooltipDisabled]="tooltipDisabled" [roundEdges]="roundEdges">
+   </ngx-charts-bar-vertical> -->
+  </div>
+  <div class="my-3 rounded-3 shadow p-3">
+    <h2 class="my-2 fw-bolder p-1">{{ "DoctorRequests" | translate }}</h2>
+    <hr />
+    <div>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">{{ "Doctor" | translate }}</th>
+            <th scope="col">{{ "role" | translate }}</th>
+            <th scope="col">{{ "specification" | translate }}</th>
+            <th scope="col">{{ "Certificate" | translate }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let doctor of pagedItems; index as i"
+            key="doctor.doctorId"
+          >
+            <ng-container *ngIf="doctor.status == 'pending'">
+              <th scope="row">{{ i + 1 }}</th>
+              <td>{{ doctor.name }}</td>
+              <td>{{ doctor.role }}</td>
+              <td>{{ doctor.specification }}</td>
+              <td
+                class="d-flex justify-content-between align-items-center flex-wrap"
+              >
+                <button
+                  type="button"
+                  class="btn btn-outline-primary"
+                  (click)="openModal(doctor.certificate)"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                >
+                  {{ "ViewPaper" | translate }}
+                </button>
+                <button
+                  class="btn btn-outline-success"
+                  (click)="updateDoctor(doctor.doctorId, 'accepted')"
+                >
+                  {{ "Accept" | translate }}
+                </button>
+                <button
+                  class="btn btn-outline-danger"
+                  (click)="updateDoctor(doctor.doctorId, 'rejected')"
+                >
+                  {{ "Reject" | translate }}
+                </button>
+              </td>
+
+              <!---------------- Modal---------------- -->
+              <div
+                *ngIf="certificate"
+                class="modal fade"
+                id="exampleModal"
+                tabindex="-1"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div class="modal-body">
+                      <img
+                        [src]="certificate"
+                        class="text-center p-3 img-thumbnail"
+                        alt="certificate"
+                      />
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                      >
+                        Close
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </tr>
+        </tbody>
+      </table>
+      <div
+        class="pagination d-flex justify-content-center align-items-center py-4"
+      >
+        <button
+          class="pagination-item text-center"
+          *ngFor="let page of length"
+          [class.active]="currentPage === page"
+          (click)="setPage(page)"
+        >
+          {{ page }}
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center align-items-center flex-wrap">
+    <div class="w-75">
+      <div class="col-md-12">
+        <p class="h5 fw-bolder mt-2">{{ "Appointments" | translate }}</p>
+      </div>
+      <div class="row justify-content-center align-items-center">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-3 col-sm-3 col-3">
+              <p class="h6 fw-bold">{{ "Patient" | translate }}</p>
+            </div>
+            <div class="col-md-2 col-sm-2 col-2">
+              <p class="h6 fw-bold">{{ "date" | translate }}</p>
+            </div>
+            <div class="col-md-2 col-sm-2 col-2">
+              <p class="h6 fw-bold">{{ "Time" | translate }}</p>
+            </div>
+            <div class="col-md-2 col-sm-2 col-2">
+              <p class="h6 fw-bold">{{ "Doctorname" | translate }}</p>
+            </div>
+            <div class="col-md-2 col-sm-2 col-2">
+              <p class="h6 fw-bold">test</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12" *ngIf="allBookings; else noBookingsPart">
+          <div class="row mb-3" *ngFor="let booking of pagedItems1; index as i">
+            <div class="col-md-3 col-sm-3 col-3">
+              <div class="row">
+                <div class="col-md-5 col-sm-5 col-5">
+                  <div *ngIf="booking.doctor.imageUrl; else elseBlock">
+                    <img
+                      [src]="booking.doctor.imageUrl"
+                      class="rounded-circle"
+                      alt="doctor img"
+                      style="height: 2rem"
+                    />
+                  </div>
+
+                  <ng-template #elseBlock>
+                    <img
+                      src="../../../assets/avatar/Avatar.svg"
+                      class="rounded-circle"
+                      alt="doctor img"
+                      style="height: 2rem"
+                    />
+                  </ng-template>
+                </div>
+                <div class="col-md-7 col-sm-7 col-7 d-flex align-items-center">
+                  <p>
+                    {{ booking.user.name }}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2 col-sm-2 col-2 d-flex align-items-center">
+              {{ booking.timeSlot.date | date }}
+            </div>
+            <div class="col-md-2 col-sm-2 col-2 d-flex align-items-center">
+              {{ booking.timeSlot.from | date : "shortTime" }}
+            </div>
+            <div class="col-md-2 col-sm-2 col-2 d-flex align-items-center">
+              {{ booking.doctor.name }}
+            </div>
+            <div class="col-md-2 col-sm-2 col-2 d-flex align-items-center">
+              Test
+            </div>
+          </div>
+
+          <div
+            class="pagination d-flex justify-content-center align-items-center py-4"
+          >
+            <button
+              class="pagination-item text-center"
+              *ngFor="let page of length1"
+              [class.active]="currentPage1 === page"
+              (click)="setPage1(page)"
+            >
+              {{ page }}
+            </button>
+          </div>
+        </div>
+
+        <ng-template #noBookingsPart>
+          <div class="col-md-12">Loading</div>
+        </ng-template>
+      </div>
+    </div>
+    <div class="row w-25 reviews-container rounded-3">
+      <div class="col-6 text-start">
+        <p class="h5 fw-bolder mt-2">{{ "Reviews" | translate }}</p>
+      </div>
+      <div class="col-6">
+        <!-- <p class="text-decoration-underline mt-2">view All</p> -->
+      </div>
+      <div class="col-12" *ngIf="doctorsMostRated; else noDoctorsPart">
+        <div class="row" *ngFor="let doctor of pagedItems2; index as i">
+          <div class="col-4 d-flex justify-content-end">
+            <div *ngIf="doctor.imageUrl; else elseBlock">
+              <img
+                [src]="doctor.imageUrl"
+                class="rounded-circle"
+                alt="doctor img"
+                style="height: 2rem"
+              />
+            </div>
+
+            <ng-template #elseBlock>
+              <img
+                src="../../../assets/avatar/Avatar.svg"
+                class="rounded-circle"
+                alt="doctor img"
+                style="height: 2rem"
+              />
+            </ng-template>
+          </div>
+          <div class="col-8 mt-2">
+            <p class="h6 d-block">{{ doctor.name }}</p>
+            <i
+              class="bi bi-star-fill text-warning me-1"
+              *ngFor="let star of doctor.ratesValues"
+            ></i>
+          </div>
+          <!-- <ng-template #noDoctorsBlock>
+            <div class="col-md-12">
+              Loading
+            </div>
+          </ng-template> -->
+        </div>
+      </div>
+
+      <div
+        class="pagination d-flex justify-content-center align-items-center py-4"
+      >
+        <button
+          class="pagination-item text-center"
+          *ngFor="let page of length2"
+          [class.active]="currentPage2 === page"
+          (click)="setPage2(page)"
+        >
+          {{ page }}
+        </button>
+      </div>
+      <ng-template #noDoctorsPart>
+        <div class="col-md-12">Loading</div>
+      </ng-template>
+    </div>
+  </div>
+  <!-- <table class="table table-borderless appointments-container">
+      <thead>
+        <tr>
+          <th>Patient Name</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Doctor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="">
+              name
+          </td>
+          <td>22April</td>
+          <td>10Pm</td>
+          <td>ahmed</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>@fat</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td colspan="2">Larry the Bird</td>
+          <td>@twitter</td>
+        </tr>
+      </tbody>
+    </table> -->
+
+  <!-- <div class="row mt-3 mb-4 d-flex px-2 justify-content-center">
+  <div class="col-md-12">
+    <p class="h3 text-center "> <span class="border-bottom border-3 text-dark border-primary rounded">User distribution</span></p>
+  </div>
+   <div class="col-md-4 graph-container me-4">
+    <ngx-charts-advanced-pie-chart class="my-2 bg-transparent w-100 overflow-none" [results]="single" [scheme]="colorScheme" 
+    [gradient]="gradient" (select)="onSelect($event)" >
+    </ngx-charts-advanced-pie-chart>    
+  </div> 
+  <div class="col-md-4 graph-container">
+    <div class="w-100">
+
+      <ngx-charts-number-card
+      
+      [results]="single"
+      [scheme]="colorScheme"
+      [cardColor]="cardColor"
+      (select)="onSelect($event)"
+    >
+    </ngx-charts-number-card>
+    </div>
+    
+  </div>
+
+</div> -->
+</div>
+
+<!-- <div class="w-50 mx-auto">
+<ngx-charts-number-card
+  [view]="view"
+  [results]="single"
+  [cardColor]="cardColor"
+  (select)="onSelect($event)"
+>
+</ngx-charts-number-card>
+</div> -->
+
+<!-- <ngx-charts-bar-horizontal
+[view]="view"
+[scheme]="colorScheme"
+[results]="deptFrequency"
+[gradient]="gradient"
+[xAxis]="showXAxisLabel"
+[yAxis]="showYAxisLabel"
+[legend]="legend"
+[showXAxisLabel]="showXAxisLabel"
+[showYAxisLabel]="showYAxisLabel"
+[xAxisLabel]="xAxisLabelDepartment"
+[yAxisLabel]="yAxisLabelDepartment"
+(select)="onSelect($event)"
+
+>
+</ngx-charts-bar-horizontal> -->
+
+<!-- <div *ngIf="booking.doctor.imageUrl; else elseBlock">
+                    <img
+                      [src]="booking.doctor.imageUrl"
+                      class="rounded-circle"
+                      alt="doctor img"
+                      style="height: 2rem"
+                    />
+                  </div>
+
+                  <ng-template #elseBlock>
+                    <img
+                      src="../../../assets/avatar/Avatar.svg"
+                      class="rounded-circle"
+                      alt="doctor img"
+                      style="height: 2rem"
+                    />
+                  </ng-template> -->

@@ -1,0 +1,41 @@
+<section id="appointment" class="appointment section-bg mt-3">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>{{'Make an Appointment' | translate}}</h2>
+        <p>{{'We strive to make your appointment scheduling process as seamless as possible, so you can focus on your health and well-being.' | translate}}</p>
+      </div>
+
+      <form (ngSubmit)="onBooking()"  [formGroup]="appointmentForm" class="php-email-form">
+        <div class="row">
+            <div class="col-md-4 form-group mt-3 ">
+                <input class="form-control" formControlName="doctor" placeholder="Enter a doctor name" name="doctor" type="text">
+                <!-- <p class="validate mt-2" *ngIf="!appointmentForm.get('department').valid && appointmentForm.get('department').touched" >Please select a department</p> -->
+              </div>
+          <div class="col-md-4 form-group mt-3 ">
+            <select name="department" id="department"  formControlName="department" class="form-select">
+              <option>{{'Select Department' | translate}}</option>
+              <option *ngFor="let dep of departmentsarray">{{dep}}</option>
+            </select>
+            <!-- <p class="validate mt-2" *ngIf="!appointmentForm.get('department').valid && appointmentForm.get('department').touched" >Please select a department</p> -->
+          </div>
+          <div class="col-md-4 form-group mt-3">
+            <select  formControlName="address" name="address" id="address" class="form-select">
+              <option>{{'Select your city' | translate}}</option>
+              <option *ngFor="let add of addressarray">{{add}}</option>
+            </select>
+            <!-- <p class="validate mt-2" *ngIf="!appointmentForm.get('doctors').valid && appointmentForm.get('doctors').touched" >Please select a doctor</p> -->
+          </div>
+        </div>
+
+    
+        <div class="mb-3">
+          <div class="loading">Loading</div>
+          <div class="error-message"></div>
+          <div class="sent-message">Your appointment request has been sent successfully. Thank you!</div>
+        </div>
+        <div class="text-center"><button type="submit"  class="btn" > Search Now</button></div>
+      </form>
+
+    </div>
+  </section>

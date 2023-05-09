@@ -1,0 +1,225 @@
+<!-- <div id="topbar" class="d-flex align-items-center fixed-top">
+    <div class="container d-flex justify-content-between">
+        <div class="contact-info d-flex align-items-center">
+            <i class="bi bi-envelope"></i> <a href="mailto:contact@example.com">contact@example.com</a>
+            <i class="bi bi-phone"></i> +1 5589 55488 55
+        </div>
+        <div class="d-none d-lg-flex social-links align-items-center">
+            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link " routerLinkActive="active" aria-current="page" routerLink="">{{'Home' | translate}}</a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link" routerLink="/auth/signup">auth</a>
+          </li> -->
+<!-- <li *ngIf="type == 'null'" class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="/auth/signin">{{'Sign In' | translate}}</a>
+          </li>
+          <li *ngIf="type == 'null'" class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="/auth/signup">{{'Sign Up' | translate}}</a>
+          </li>
+          <li *ngIf="type == 'doctor'" class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="/auth/signup">doctor home</a>
+          </li>
+          <li *ngIf="type == 'patient'" class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="/auth/signup">patient home</a>
+          </li> -->
+<!-- <li class="nav-item">
+            <a class="nav-link" routerLink="/doctor">doctor</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/patient">patient</a>
+          </li> -->
+
+<!-- </ul>
+        <div class="d-flex" role="search">
+          <button *ngIf="type == 'doctor' || type == 'patient'" class="btn btn-outline-success" (click)="logout()" >{{'logout' | translate}}</button>
+        </div>
+    </div>
+</div> -->
+
+<header id="header" class="sticky-top">
+  <div class="container d-flex align-items-center justify-content-around">
+    <img
+      src="../../../assets/logo/GPLogo.svg"
+      routerLink="/"
+      class="logo me-auto navbar-brand"
+      style="width: 80px; height: 80px"
+      alt="logo"
+    />
+    <nav id="navbar" class="navbar order-last order-lg-0">
+      <ul>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            aria-current="page"
+            [routerLinkActiveOptions]="{ exact: true }"
+            routerLink="/home"
+            >{{ "Home" | translate }}</a
+          >
+        </li>
+
+        <!-- <li><a class="nav-link scrollto" href="#about">About</a></li> -->
+
+        <li>
+          <a class="nav-link scrollto" href="#doctors">{{
+            "TotalDoctors" | translate
+          }}</a>
+        </li>
+        <!-- <li class="dropdown"><a href="#">Dropdown<i class="fa-solid fa-caret-down"></i></a>
+                    <ul>
+                        <li><a href="#">Drop Down 1</a></li>
+                        <li class="dropdown"><a href="#">Deep Drop Down <i class="fa-solid fa-caret-left"></i></a>
+                            <ul>
+                                <li><a href="#">Deep Drop Down 1</a></li>
+                                <li><a href="#">Deep Drop Down 2</a></li>
+                                <li><a href="#">Deep Drop Down 3</a></li>
+                                <li><a href="#">Deep Drop Down 4</a></li>
+                                <li><a href="#">Deep Drop Down 5</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Drop Down 2</a></li>
+                        <li><a href="#">Drop Down 3</a></li>
+                        <li><a href="#">Drop Down 4</a></li>
+                    </ul>
+                </li> -->
+
+        <li *ngIf="type == 'admin'" class="nav">
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            routerLink="/admin/dashboard"
+            >{{ "Dashboard" | translate }}</a
+          >
+        </li>
+        <li *ngIf="type == 'doctor'" class="nav">
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            routerLink="/doctor/dashboard"
+            >{{ "Dashboard" | translate }}</a
+          >
+        </li>
+        <li *ngIf="type == 'patient'" class="nav">
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            routerLink="/patient/dashboard"
+            >{{ "Dashboard" | translate }}</a
+          >
+        </li>
+        <li *ngIf="type == 'doctor'" class="nav-item">
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            routerLink="/doctor/addslot"
+            >{{ "AddSlots" | translate }}</a
+          >
+        </li>
+        <li *ngIf="type == 'doctor'" class="nav-item">
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            routerLink="/doctor/getslots"
+            >{{ "YourSlot" | translate }}</a
+          >
+        </li>
+
+        <li *ngIf="type == 'admin'" class="nav-item">
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            routerLink="/admin/addUser"
+            >{{ "AddUser" | translate }}</a
+          >
+        </li>
+        <li *ngIf="type == 'admin'" class="nav-item">
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            routerLink="/admin/viewUsers"
+            >{{ "ViewUsers" | translate }}</a
+          >
+        </li>
+        <li class="nav-item" *ngIf="type == 'patient'">
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            routerLink="/All-appointments"
+            >{{ "AllAppointments" | translate }}</a
+          >
+        </li>
+        <li
+          *ngIf="type == 'doctor' || type == 'patient' || type == 'admin'"
+          class="nav-item"
+        >
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            (click)="logout()"
+            style="cursor: pointer"
+            >{{ "logout" | translate }}</a
+          >
+        </li>
+        <li *ngIf="type == 'null'" class="nav-item">
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            routerLink="/auth/signin"
+            >{{ "Sign In" | translate }}</a
+          >
+        </li>
+        <li *ngIf="type == 'null'" class="nav-item">
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            routerLink="/auth/signup"
+            >{{ "Sign Up" | translate }}</a
+          >
+        </li>
+        <!-- <li *ngIf="type == 'patient'" class="nav-item" >
+          <a class="nav-link" routerLinkActive="active" style="cursor: pointer">{{
+            "Patienthome" | translate
+          }}</a>
+        </li> -->
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav>
+    <!-- .navbar -->
+    <a href="#appointment" class="appointment-btn scrollto"
+      ><span class="d-none d-md-inline">{{ "Make an" | translate }}</span>
+      {{ "Appointment" | translate }}</a
+    >
+    <div *ngIf="type != 'null'" class="nav-item" style="margin-left: 3rem">
+      <div *ngIf="userData; else elseBlock">
+        <img
+          [src]="userData.imageUrl"
+          class="rounded-circle"
+          alt="user img"
+          style="height: 2rem"
+        />
+      </div>
+
+      <ng-template #elseBlock>
+        <img
+          src="../../../assets/avatar/Avatar.svg"
+          class="img-rounded"
+          alt="user img"
+          style="height: 2rem"
+        />
+      </ng-template>
+    </div>
+  </div>
+</header>

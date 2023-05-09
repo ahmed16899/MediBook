@@ -1,0 +1,36 @@
+<div class="section-bg-light p-5" >
+    <form (ngSubmit)="submitForm()" [formGroup]="loginForm" class="w-50 mx-auto py-5 ">
+        <h2 class="text-center cH2">{{'Sign In' | translate}}</h2>
+        <label for="email" class="my-2">{{'Email' | translate}}</label>
+        <input id="email" formControlName="credential" class="form-control" type="text">
+        <div *ngIf="loginForm.get('credential')?.errors != null  && loginForm.get('credential')?.touched"
+            class="alert alert-danger mt-2">
+            <p *ngIf="loginForm.get('credential')?.errors?.['required']" class="m-0">{{'Emailisrequired' | translate}}
+            </p>
+            <p *ngIf="loginForm.get('credential')?.errors?.['pattern']" class="m-0">{{'EnterEmailForm' | translate}}</p>
+        </div>
+
+        <label for="password" class="my-2">{{'Password' | translate}}</label>
+        <input id="password" formControlName="password" class="form-control" type="password">
+        <div *ngIf="loginForm.get('password')?.errors != null  && loginForm.get('password')?.touched"
+            class="alert alert-danger mt-2">
+            <p *ngIf="loginForm.get('password')?.errors?.['required']" class="m-0">{{'Passwordisrequired' | translate}}
+            </p>
+            <p *ngIf="loginForm.get('password')?.errors?.['minlength']" class="m-0">{{'Passwordmustbemorethan8chars' |
+                translate}}</p>
+        </div>
+
+        <div class="text-center">
+            <button class="btnCustomeStyle mt-5 " [disabled]="loginForm.invalid">{{'Sign In' | translate}}</button>
+
+        </div>
+        <!-- <div  *ngIf="errors" class="alert alert-danger mt-2">
+                 <p class="m-0 p-0">{{errors}}</p>
+             </div> -->
+    </form>
+    <!-- *ngIf="!checkLoader" -->
+    <div class=" d-flex justify-content-center " *ngIf="!checkLoader">
+        <mat-spinner></mat-spinner>
+      </div>
+
+</div>

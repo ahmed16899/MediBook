@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+}
+
+.dashboard-container {
+  background-color: white;
+}
+
+.reviews-container {
+  background-color: white;
+}
+
+.img-rounded {
+  border-radius: 50px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+  width: 100%;
+  height: 10%;
+}

@@ -1,0 +1,53 @@
+<div class="spinnerCustomStyle " *ngIf="!isLoaded">
+    <mat-spinner  ></mat-spinner>
+</div>
+
+<div class="container" *ngIf="isLoaded">
+    <div class="row justify-content-center">
+        <div class="card my-5 shadow-sm  mb-5 bg-body-tertiary rounded" style="width: 40rem; height: auto;">
+            <div  style="position: relative;">
+            <img src="../../../assets/img/you.jpg" class="card-img-top" >
+            <svg xmlns="http://www.w3.org/2000/svg" width="90" height="90" fill="currentColor" class="iconcheck bi bi-check-circle" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+              </svg>
+            <p class="thankyoup">Your booking was successfully submitted</p>
+        </div>
+            <div class="card-body">
+                <span class="bi bi-envelope icon" >
+                    <span class="card-parag">We notified Clinic Prof Dr {{bookingInfo?.name}} of your booking</span>
+            </span>
+            <br>
+            <span class="bi bi-cash my-3 icon"><span class="card-parag">Examination Fees: {{bookingInfo?.fees}}
+                EGP</span></span>
+                <div class="hline mt-5"></div>
+                <span class="bi bi-telephone my-1 icon"><span class="card-parag">Clinic number: <span>{{bookingInfo?.mobilePhone}}</span></span></span>
+                <span class="bi bi-calendar3 mt-5 icon" style="border-bottom: 1px solid rgb(224, 224, 224); width: 97%;"><span class="card-parag">Booking details</span></span>
+                
+                <div class="sp my-5"></div>
+                <div class="c-parent">
+                    <h5 class="c-title">Patient name</h5>
+                    <div class="c-parag">{{bookingInfo?.username}}</div>
+                </div>
+                <div class="hline mt-5"></div>
+                <div class="c-parent">
+                    <h5 class="c-title">Booking date</h5>
+                    <div class="c-parag">
+                        {{bookingInfo?.date}}
+                    </div>
+                </div>
+                <div class="hline mt-5"></div>
+                <div class="c-parent">
+                    <h5 class="c-title">Doctor Name</h5>
+                    <div class="c-parag" >Clinic Prof Dr {{bookingInfo?.name}}</div>
+                </div>
+                <div class="hline mt-5"></div>
+                <div class="c-parent">
+                    <h5 class="c-title" >Clinic address</h5>
+                    <div class="c-parag">{{bookingInfo?.clinicAddress}} </div>
+                </div>
+            </div>
+          </div>
+    </div>
+    
+</div>

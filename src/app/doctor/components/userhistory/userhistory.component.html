@@ -1,0 +1,41 @@
+<div class="spinnerCustomStyle" *ngIf="!isLoaded">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div class="card my-5 py-5" *ngIf="isLoaded">
+  <div class="card-header">
+    <h2 class="card-title text-center my-3">
+      {{ "Patient" | translate }} : {{ patientName }}
+    </h2>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div *ngFor="let doctor of doctors" class="col-md-6">
+        <div class="card shadow rounded-3 p-3 m-2">
+          <div
+            class="card-header d-flex justify-content-between align-items-center"
+          >
+            <h2 class="card-title">
+              {{ "Doctor" | translate }} : {{ doctor.doctor.name }}
+            </h2>
+            <h2 class="card-title">
+              {{ "specification" | translate }} :
+              {{ doctor.doctor.specification }}
+            </h2>
+          </div>
+          <div class="card-body">
+            <h2 class="card-text">
+              {{ "date" | translate }} : {{ doctor.date | date : "yyyy/MM/dd" }}
+            </h2>
+            <div class="text-center">
+              <h2 *ngIf="doctor.doctorInstructions">
+                {{ "doctorInstructions" | translate }} :
+              </h2>
+              <h3 class="card-text">{{ doctor.doctorInstructions }}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

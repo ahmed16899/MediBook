@@ -1,0 +1,95 @@
+
+.card img
+{
+    background-size: cover;
+background-repeat: no-repeat;
+height: 193px;
+border-radius: 10px 10px 0px 0px;
+
+}
+.card:hover{
+    transform: scale(1.1);
+}
+.icon
+{
+  font-size: 20px;
+  position: absolute;
+  z-index: 1;
+  color: #1977cc
+}
+.hline
+{
+    width: 100%;
+margin: 15px 0px;
+border: 0.5px solid rgb(224, 224, 224);
+}
+.sp{
+    width: 100%;
+    margin: 15px 0px;
+    border: 0.5px solid rgb(255, 255, 255);
+}
+.c-title
+{
+    padding: 5px;
+margin: 0px;
+line-height: 1.35;
+font-weight: 600;
+font-size: 13px;
+color: inherit;
+}
+.c-parent
+{
+        display: grid;
+        grid-template-columns: 25% 58% 17%;
+        color: rgb(116, 116, 112);
+        margin-bottom: 0px;
+      
+}
+.c-parag{
+    padding: 3px;
+font-size: 14px;
+color: inherit;
+}
+.card-parag
+{
+    color: rgb(111, 112, 114);
+    font-weight: 400;
+    font-size: 13px;
+    margin: 5px;
+}
+.card{
+    border: none;
+    background: white;
+direction: ltr;
+text-align: left;
+padding: 0px;
+min-height: 500px;
+margin: 0px;
+
+transition: ease-in-out 0.3s; 
+width: 100%;
+min-height: 400px;
+border-radius: 10px;
+}
+
+.iconcheck{
+
+    color: lightgreen;
+    font-weight: 100;
+    left: 50%;
+position: absolute;
+top: 40%;
+transform: translate(-50%,-50%);
+margin: 0px;
+}
+.thankyoup{
+    left: 50%;
+    display: inline-block;
+font-size: 15px;
+font-weight: 300;
+position: absolute;
+top: 70%;
+transform: translate(-50%,-50%);
+margin: 0px;
+color: rgb(77, 77, 75);
+}
