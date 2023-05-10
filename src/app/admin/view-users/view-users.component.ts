@@ -3,6 +3,7 @@ import { AdminserviceService } from '../services/adminservice.service';
 import { __param } from 'tslib';
 import { map } from 'rxjs';
 import { Color, ScaleType } from '@swimlane/ngx-charts';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-view-users',
   templateUrl: './view-users.component.html',
@@ -65,11 +66,19 @@ onDeactivate(data): void {
   console.log('Deactivate', JSON.parse(JSON.stringify(data)));
 }
 
-  constructor(private _adminService:AdminserviceService) {
+  constructor(private _adminService:AdminserviceService , private toastr: ToastrService) {
    }
 
   ngOnInit (): void {
     this.getFilteredData()
+    this.getAllUsers();
+
+  }
+
+
+
+  getAllUsers()
+  {
     this._adminService.getUsers(null).subscribe((users)=>{
       console.log(users.users);
 
@@ -127,6 +136,22 @@ get pagedItems() {
 }
 setPage(pageNumber: number) {
   this.currentPage = pageNumber;
+}
+deleteUser(id:any)
+{
+  //console.log(id)
+  this._adminService.deleteUser(id).subscribe((res)=>{
+    if(res.message = 'user Deleted successfully')
+    {
+      this.toastr.success('success', 'Deleted Successfully');
+      this.getFilteredData()
+      this.getAllUsers();
+    }
+    else
+    {
+      this.toastr.error('error', `Can't deleted`);
+    }
+  })
 }
   
 

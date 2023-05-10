@@ -116,12 +116,19 @@
             <div *ngIf="addUserForm.get('gender')?.invalid && (addUserForm.get('gender')?.dirty || addUserForm.get('gender')?.touched)" class="alert alert-danger mt-2">
                 <div *ngIf="addUserForm.get('gender')?.errors?.['required']">{{'Genderisrequired' | translate}}</div>
             </div>
+            <div *ngIf="addUserForm.controls['type'].value == 'doctor'">
+                <label class="my-2" for="Certificate">{{'Certificate' | translate}}</label>
+                <input type="file" id="Certificate" class="form-control" (change)="onFileSelectedCer($event)">
+              </div> 
         </div>
         <div class="text-center">
             <button class="btnCustomeStyle btn-success mt-5" type="submit" [disabled]="addUserForm.invalid">{{'Add User' | translate}}</button>
 
         </div>
     </form>
+    <div class=" d-flex justify-content-center " *ngIf="!checkLoader">
+        <mat-spinner></mat-spinner>
+      </div>
 </div>
 
 

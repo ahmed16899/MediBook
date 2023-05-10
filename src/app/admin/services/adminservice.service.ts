@@ -41,4 +41,14 @@ export class AdminserviceService {
     };
     return this._httpClient.patch(`${environment.ApiUrl}/editDoctorStatus/${id}`,status,httpOptions)
   }
+
+ deleteUser(id:any):Observable<any>
+  {
+    const httpOptions = {
+      headers: new HttpHeaders({      
+        'auth':localStorage.getItem('token')
+      })
+    };
+    return this._httpClient.delete(`${environment.ApiUrl}/deleteuser/${id}`,httpOptions)
+  }
 }
