@@ -13,7 +13,7 @@
 
                 <div class="member card col-9 my-3 " *ngFor="let Bookingitem of patients">
                     <div class="d-flex align-items-start">
-                        <div class="pic"><img src="assets/img/doctors/avatar.jpg" class="img-fluid" alt=""></div>
+                        <div class="pic"><img [src]="Bookingitem.imageUrl"  onerror="this.onerror=null;this.src=`../../../assets/avatar/Avatar.svg`" class="img-fluid" alt=""></div>
                         <div class="member-info">
                             <h4>{{Bookingitem.name}}</h4>
 
