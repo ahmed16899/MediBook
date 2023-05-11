@@ -336,9 +336,9 @@
             <div class="col-md-2 col-sm-2 col-2">
               <p class="h6 fw-bold">{{ "Doctorname" | translate }}</p>
             </div>
-            <div class="col-md-2 col-sm-2 col-2">
+            <!-- <div class="col-md-2 col-sm-2 col-2">
               <p class="h6 fw-bold">test</p>
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="col-md-12" *ngIf="allBookings; else noBookingsPart">
@@ -380,9 +380,9 @@
             <div class="col-md-2 col-sm-2 col-2 d-flex align-items-center">
               {{ booking.doctor.name }}
             </div>
-            <div class="col-md-2 col-sm-2 col-2 d-flex align-items-center">
+            <!-- <div class="col-md-2 col-sm-2 col-2 d-flex align-items-center">
               Test
-            </div>
+            </div> -->
           </div>
 
           <div
@@ -420,6 +420,7 @@
                 class="rounded-circle"
                 alt="doctor img"
                 style="height: 2rem"
+                onerror="this.onerror=null;this.src=`../../../assets/avatar/Avatar.svg`"
               />
             </div>
 

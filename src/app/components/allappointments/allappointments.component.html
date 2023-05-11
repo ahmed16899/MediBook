@@ -10,7 +10,7 @@
                 
                 <div class="member card col-9 my-3 " *ngFor="let Bookingitem of bookingInfo" (click)="goToDoctorDetails(Bookingitem.doctorId,Bookingitem.bookingId)" >
                     <div class=" d-flex align-items-start " >
-                    <div class="pic"><img src="assets/img/doctors/doctors-1.jpg" class="img-fluid" alt=""></div>
+                    <div class="pic"><img [src]="Bookingitem.imageUrl" class="img-fluid"   onerror="this.onerror=null;this.src=`../../../assets/avatar/Avatar.svg`" alt=""></div>
                     <div class="member-info">
                         <h4>{{Bookingitem.name}}</h4>
                         <div>Doctor specialized in {{Bookingitem?.specification}}

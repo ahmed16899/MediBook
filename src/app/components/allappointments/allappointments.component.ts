@@ -17,11 +17,10 @@ export class AllappointmentsComponent implements OnInit  {
   
     async ngOnInit(): Promise<void> {
       this.isLoaded=false;
-     await this.auth.userdata.subscribe((value:any)=>{
+      this.auth.userdata.subscribe((value:any)=>{
         this.userId=value._id;
-        this.getuserBookingsInfo();
     })
-    
+    this.getuserBookingsInfo();
         
     }
   
@@ -35,12 +34,13 @@ export class AllappointmentsComponent implements OnInit  {
         this.http.get(`${environment.ApiUrl}/userbookings/${this.userId}`).pipe(map((res)=>{
         for(let key in res)
         {
+          console.log(res)
           if(key=='userBookings')
           {
             for(let key2 in res[key])
             {
               bookingItem=res[key][key2]; 
-              let {name,mobilePhone ,clinicAddress,specification,doctorId,doctorRate}=bookingItem.doctor;
+              let {name,mobilePhone ,clinicAddress,specification,doctorId,doctorRate , imageUrl}=bookingItem.doctor;
               let {fees,_id}=bookingItem.booking;
               let {username}=bookingItem.user;
               let {from,to}=bookingItem.timeSlot;
@@ -52,7 +52,7 @@ export class AllappointmentsComponent implements OnInit  {
           from=from.toLocaleTimeString();
           to=to.toLocaleTimeString();
           let date=`${dayname}-${month}-${year} From ${from} to ${to}`; 
-          this.bookingInfo.push({name,fees ,mobilePhone,date,clinicAddress,specification,doctorId,doctorRate,bookingId:_id});
+          this.bookingInfo.push({name,fees ,mobilePhone,date,clinicAddress,specification,doctorId,doctorRate,bookingId:_id , imageUrl});
             }
           
           }

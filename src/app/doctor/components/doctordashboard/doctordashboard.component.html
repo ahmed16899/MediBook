@@ -3,164 +3,109 @@
 </div>
 
 <div class="container-fluid mt-5" *ngIf="checkLoader">
-  <div class="row my-3 mx-1">
-    <div class="col-xl-6">
-      <div
-        class="card d-flex justify-content-center align-items-center w-50 h-75 p-3"
-      >
-        <div *ngIf="doctorInfo.imageUrl; else elseBlock">
-          <img
-            [src]="doctorInfo.imageUrl"
-            class="img-fluid rounded-start w-25 h-25"
-            alt="doctorImage"
-            style="height: 100%"
-          />
-        </div>
+  <div class="row my-3 mx-1 ">
+      <div class="d-flex justify-content-center ">
+          <div class="shadow border border-primary card d-flex justify-content-center align-items-center w-50 h-75 p-3">
+              <div class="text-center" *ngIf="doctorInfo.imageUrl; else elseBlock">
+                  <img [src]="doctorInfo.imageUrl"             onerror="this.onerror=null;this.src=`../../../assets/avatar/Avatar.svg`"
+                  class="rounded-start w-25" alt="doctorImage" />
+              </div>
 
-        <ng-template #elseBlock>
-          <img
-            src="../../../../assets/avatar/Avatar.svg"
-            class="rounded-circle w-50 h-50"
-            alt="doctor img"
-            style="height: 100%"
-          />
-        </ng-template>
+              <ng-template #elseBlock>
+                  <img src="../../../../assets/avatar/Avatar.svg" class="rounded-circle w-50 h-50" alt="doctor img" style="height: 100%" />
+              </ng-template>
 
-        <div class="">
-          <div class="card-body text-primary">
-            <h1 class="card-title">
-              <i class="fa-solid fa-user"></i> {{ doctorInfo.name }}
-            </h1>
-            <h1 class="card-title">
-              <i class="fa-solid fa-phone"></i> {{ doctorInfo.mobilePhone }}
-            </h1>
-            <h5 class="card-text d-inline">
-              <i class="fa-solid fa-circle-dot mx-1"></i
-              >{{ doctorInfo.specification }}
-            </h5>
-            <h5 class="card-text d-inline mx-5">
-              <i class="fa-solid fa-circle-dot mx-1"></i>{{ doctorInfo.role }}
-            </h5>
-            <h5 *ngIf="doctorRating" class="card-text d-inline mx-3">
-              <i class="fa-solid fa-circle-dot mx-1"></i
-              ><i
-                class="bi bi-star-fill text-warning me-1"
-                *ngFor="let star of doctorRating"
-              ></i>
-            </h5>
+              <div class="shadow-md w-100 d-flex justify-content-center">
+                  <div class=" card-body text-primary ">
+                      <div class="d-flex justify-content-evenly ">
+                          <h1 class="card-title ">
+                              <i class="fa-solid fa-user "></i> {{ doctorInfo.name }}
+                          </h1>
+                          <h1 class="card-title ">
+                              <i class="fa-solid fa-phone "></i> {{ doctorInfo.mobilePhone }}
+                          </h1>
+                      </div>
+                      <div class="d-flex justify-content-evenly mt-3 ">
+                          <h5 class="card-text d-inline ">
+                              <i class="fa-solid fa-circle-dot mx-1 "></i
+            >{{ doctorInfo.specification }}
+          </h5>
+          <h5 class="card-text d-inline ">
+            <i class="fa-solid fa-circle-dot mx-1 "></i>{{ doctorInfo.role }}
+                          </h5>
+                          <h5 *ngIf="doctorRating " class="card-text d-inline mx-3 ">
+                              <i class="fa-solid fa-circle-dot mx-1 "></i
+            ><i
+              class="bi bi-star-fill text-warning me-1 "
+              *ngFor="let star of doctorRating "
+            ></i>
+                          </h5>
+                      </div>
+                  </div>
+              </div>
           </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row mt-5">
-      <div class="col-xl-6">
-        <div class="card shadow">
-          <div class="card-header">
-            <h2 class="card-title">
-              {{ "TotalReservations" | translate }}
-            </h2>
-          </div>
-          <ngx-charts-linear-gauge
-            [view]="view"
-            [scheme]="colorScheme"
-            [value]="reservations"
-            [previousValue]="maxReservations"
-            (select)="onSelect($event)"
-            [units]="units"
-          >
-          </ngx-charts-linear-gauge>
-        </div>
-      </div>
-      <div class="col-xl-6 cm">
-        <div class="card shadow">
-          <div class="card-header">
-            <h2 class="card-title">
-              {{ "Reservations" | translate }}
-            </h2>
-          </div>
-
-          <ngx-charts-bar-vertical-2d
-            *ngIf="timeSlots.length"
-            [view]="view"
-            [scheme]="colorScheme"
-            [results]="timeSlots"
-            [gradient]="gradient"
-            [xAxis]="xAxis"
-            [yAxis]="yAxis"
-            [legend]="showLegend"
-            [showXAxisLabel]="showXAxisLabel"
-            [showYAxisLabel]="showYAxisLabel"
-            [xAxisLabel]="xAxisLabel"
-            yAxisLabel="Reservations "
-            [legendTitle]="legendTitle"
-            (select)="onSelect($event)"
-            (activate)="onActivate($event)"
-            (deactivate)="onDeactivate($event)"
-          >
-          </ngx-charts-bar-vertical-2d>
-          <div class="text-center p-5" *ngIf="!timeSlots.length">
-            <h2 class="cH2">{{ "NoData" | translate }}</h2>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-6 cmm">
-        <div class="card shadow">
-          <div class="card-header">
-            <h2 class="card-title">
-              {{ "AvgVisitsbyGender" | translate }}
-            </h2>
-          </div>
-          <ngx-charts-pie-chart
-            *ngIf="patientGenders.length"
-            [view]="view"
-            [scheme]="colorScheme"
-            [results]="patientGenders"
-            [gradient]="gradient"
-            [legend]="showLegend"
-            [legendPosition]="legendPosition"
-            [labels]="showLabels"
-            [doughnut]="isDoughnut"
-            (select)="onSelect($event)"
-            (activate)="onActivate($event)"
-            (deactivate)="onDeactivate($event)"
-          >
-          </ngx-charts-pie-chart>
-          <div class="text-center p-5" *ngIf="!patientGenders.length">
-            <h2 class="cH2">{{ "NoData" | translate }}</h2>
-          </div>
-        </div>
       </div>
 
-      <div class="col-xl-6 cmm">
-        <div class="card shadow">
-          <div class="card-header">
-            <h2 class="card-title">
-              {{ "Incomes" | translate }}
-            </h2>
+      <div class="row mt-5 ">
+          <div class="col-xl-6 ">
+              <div class="card shadow ">
+                  <div class="card-header ">
+                      <h2 class="card-title ">
+                          {{ "TotalReservations " | translate }}
+                      </h2>
+                  </div>
+                  <ngx-charts-linear-gauge [view]="view " [scheme]="colorScheme " [value]="reservations " [previousValue]="maxReservations " (select)="onSelect($event) " [units]="units ">
+                  </ngx-charts-linear-gauge>
+              </div>
+          </div>
+          <div class="col-xl-6 cm ">
+              <div class="card shadow ">
+                  <div class="card-header ">
+                      <h2 class="card-title ">
+                          {{ "Reservations " | translate }}
+                      </h2>
+                  </div>
+
+                  <ngx-charts-bar-vertical-2d *ngIf="timeSlots.length " [view]="view " [scheme]="colorScheme " [results]="timeSlots " [gradient]="gradient " [xAxis]="xAxis " [yAxis]="yAxis " [legend]="showLegend " [showXAxisLabel]="showXAxisLabel
+                  " [showYAxisLabel]="showYAxisLabel " [xAxisLabel]="xAxisLabel " yAxisLabel="Reservations " [legendTitle]="legendTitle " (select)="onSelect($event) " (activate)="onActivate($event) " (deactivate)="onDeactivate($event) ">
+                  </ngx-charts-bar-vertical-2d>
+                  <div class="text-center p-5 " *ngIf="!timeSlots.length ">
+                      <h2 class="cH2 ">{{ "NoData " | translate }}</h2>
+                  </div>
+              </div>
+          </div>
+          <div class="col-xl-6 cmm ">
+              <div class="card shadow ">
+                  <div class="card-header ">
+                      <h2 class="card-title ">
+                          {{ "AvgVisitsbyGender " | translate }}
+                      </h2>
+                  </div>
+                  <ngx-charts-pie-chart *ngIf="patientGenders.length " [view]="view " [scheme]="colorScheme " [results]="patientGenders " [gradient]="gradient " [legend]="showLegend " [legendPosition]="legendPosition " [labels]="showLabels
+                  " [doughnut]="isDoughnut " (select)="onSelect($event) " (activate)="onActivate($event) " (deactivate)="onDeactivate($event) ">
+                  </ngx-charts-pie-chart>
+                  <div class="text-center p-5 " *ngIf="!patientGenders.length ">
+                      <h2 class="cH2 ">{{ "NoData " | translate }}</h2>
+                  </div>
+              </div>
           </div>
 
-          <ngx-charts-bar-vertical
-            *ngIf="doctorIncomes.length"
-            [view]="view"
-            [scheme]="colorScheme"
-            [results]="doctorIncomes"
-            [gradient]="gradient"
-            [xAxis]="xAxis"
-            [yAxis]="yAxis"
-            [legend]="showLegend"
-            [showXAxisLabel]="showXAxisLabel"
-            [showYAxisLabel]="showYAxisLabel"
-            [xAxisLabel]="xAxisLabel"
-            [yAxisLabel]="yAxisLabel"
-            (select)="onSelect($event)"
-          >
-          </ngx-charts-bar-vertical>
-          <div class="text-center p-5" *ngIf="!doctorIncomes.length">
-            <h2 class="cH2">{{ "NoData" | translate }}</h2>
+          <div class="col-xl-6 cmm ">
+              <div class="card shadow ">
+                  <div class="card-header ">
+                      <h2 class="card-title ">
+                          {{ "Incomes " | translate }}
+                      </h2>
+                  </div>
+
+                  <ngx-charts-bar-vertical *ngIf="doctorIncomes.length " [view]="view " [scheme]="colorScheme " [results]="doctorIncomes " [gradient]="gradient " [xAxis]="xAxis " [yAxis]="yAxis " [legend]="showLegend " [showXAxisLabel]="showXAxisLabel
+                  " [showYAxisLabel]="showYAxisLabel " [xAxisLabel]="xAxisLabel " [yAxisLabel]="yAxisLabel " (select)="onSelect($event) ">
+                  </ngx-charts-bar-vertical>
+                  <div class="text-center p-5 " *ngIf="!doctorIncomes.length ">
+                      <h2 class="cH2 ">{{ "NoData " | translate }}</h2>
+                  </div>
+              </div>
           </div>
-        </div>
       </div>
-    </div>
   </div>
 </div>

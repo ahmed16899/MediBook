@@ -8,9 +8,10 @@
       <div class="col-md-6 col-lg-4 mb-4">
         <div class="card">
           <img
-            src="assets/img/doctors/doctors-1.jpg"
+            [src]="doctorInfo.imageUrl"
             class="card-img-top"
             alt=""
+            onerror="this.onerror=null;this.src=`../../../assets/avatar/Avatar.svg`"
           />
           <div class="card-body">
             <h4 class="card-title">{{ doctorInfo?.name }}</h4>
