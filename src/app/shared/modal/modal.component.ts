@@ -7,7 +7,7 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./modal.component.scss']
 })
 export class ModalComponent implements OnInit {
-  @Input() item:any;
+  //@Input() item:any;
   @Output() sendIdForDelete = new EventEmitter<string>();
  
   constructor(public activeModal: NgbActiveModal) { }
@@ -18,6 +18,7 @@ export class ModalComponent implements OnInit {
   deleteItem(item: any) {
     //console.log(item.Id)
     this.sendIdForDelete.emit(item);
+    this.activeModal.close('Close click')
   }
 
 }

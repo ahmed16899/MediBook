@@ -4,6 +4,9 @@ import { __param } from 'tslib';
 import { map } from 'rxjs';
 import { Color, ScaleType } from '@swimlane/ngx-charts';
 import { ToastrService } from 'ngx-toastr';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalComponent } from "src/app/shared/modal/modal.component";
+
 @Component({
   selector: 'app-view-users',
   templateUrl: './view-users.component.html',
@@ -66,7 +69,7 @@ onDeactivate(data): void {
   console.log('Deactivate', JSON.parse(JSON.stringify(data)));
 }
 
-  constructor(private _adminService:AdminserviceService , private toastr: ToastrService) {
+  constructor(private _adminService:AdminserviceService , private toastr: ToastrService , private _NgbModal:NgbModal ) {
    }
 
   ngOnInit (): void {
@@ -140,7 +143,7 @@ setPage(pageNumber: number) {
 deleteUser(id:any)
 {
   //console.log(id)
-  this._adminService.deleteUser(id).subscribe((res)=>{
+  /*this._adminService.deleteUser(id).subscribe((res)=>{
     if(res.message = 'user Deleted successfully')
     {
       this.toastr.success('success', 'Deleted Successfully');
@@ -151,8 +154,36 @@ deleteUser(id:any)
     {
       this.toastr.error('error', `Can't deleted`);
     }
+  })*/
+
+  const modalRef = this._NgbModal.open(ModalComponent);
+  //modalRef.componentInstance.item = item;
+
+  modalRef.componentInstance.sendIdForDelete.subscribe((result: any) => {
+      console.log(result)
+      //this.toastr.success('Hello world!', 'Toastr fun!');
+      if(result)
+      {
+        this._adminService.deleteUser(id).subscribe((res)=>{
+          if(res.message = 'user Deleted successfully')
+          {
+            this.toastr.success('success', 'Deleted Successfully');
+            this.getFilteredData()
+            this.getAllUsers();
+          }
+          else
+          {
+            this.toastr.error('error', `Can't deleted`);
+          }
+        })
+      }
+
   })
+
+
+  //    console.log(item)
+}
 }
   
 
-}
+//}
